@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
 
-  <title><![CDATA[Category: cli | zwilias]]></title>
-  <link href="http://zwilias.github.com/blog/categories/cli/atom.xml" rel="self"/>
+  <title><![CDATA[Category: homebrew | zwilias]]></title>
+  <link href="http://zwilias.github.com/blog/categories/homebrew/atom.xml" rel="self"/>
   <link href="http://zwilias.github.com/"/>
   <updated>2011-12-03T15:58:14+01:00</updated>
   <id>http://zwilias.github.com/</id>
@@ -137,39 +137,6 @@ and even mutt, my mailclient, is solarized.</p>
 configuration, as well as solarized palettes for both vim and tmux.</p>
 
 <p>... Ok, enough.</p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Living life the CLI way - an experiment]]></title>
-    <link href="http://zwilias.github.com/blog/2011/11/29/living-life-the-cli-way-an-experiment/"/>
-    <updated>2011-11-29T21:52:00+01:00</updated>
-    <id>http://zwilias.github.com/blog/2011/11/29/living-life-the-cli-way-an-experiment</id>
-    <content type="html"><![CDATA[<h3>First off</h3>
-
-<p>Hello, world! Seeing as how this is my first real blogpost ever, I figure that was mandatory.</p>
-
-<p>Now that that's out of the way...</p>
-
-<h3>Preface</h3>
-
-<p>Like most people who like fiddling with things - and more often than not, breaking them along the way - I occasionally come into contact with the terminal. Be it to simply run some command that don't have a graphical interface, simply to play around with a world where everything is basically text, or because I feel a CLI allows me to do certain things faster, more efficient.</p>
-
-<p>As such, I'm going to do a little experiment.</p>
-
-<h3>The Experiment</h3>
-
-<p>It's really quite simple: use my computer the way I usually do, but instead of using graphical interfaces, do it on the commandline.</p>
-
-<p>There's a certain temptation to simply say I'm trying to find command-line replacements for my regular applications and using those instead, but that's missing the point. My goal is to use the command-line as a command-line, not merely a replacement. Find alternative workflows, find better, faster, more time-efficient ways of doing things. And during all of that: learn. Become used to having your hands on your keyboard, using that to navigate my computer, my documents, my code, the internet.</p>
-
-<h3>First babysteps</h3>
-
-<p>And this blogpost right here, is my first step in that direction. I created, edited, previewed and deployed (published, in blogtalk) this post entirely on the command-line, using tools such as <code>rake</code> - the ruby equivalent of <code>make</code> (this blog is powered by <a href="http://octopress.org/">octopress</a>, a blog-aware static site generator built on top of jekyll, written in ruby), <code>vim</code> - a powerful (or so I hear) commandline text-editor, <code>links</code> - a commandline browser, great tool for usability testing, too, and once more, a <code>rake</code> task.</p>
-
-<p>I've ran into <code>rake</code> before, and I've used <code>links</code> for commandline browsing before as well. Never before, though, have I had the guts to dive into <code>vim</code>, head-first. Guiding me through this journey of sorts is a fun little blogpost by <a href="http://yannesposito.com/" title="Yann's homepage">Yann Esposito</a> titled <a href="http://yannesposito.com/Scratch/en/blog/Learn-Vim-Progressively/">Learn Vim Progressively</a> - an excellent startingpoint (I hope) for anyone looking to get into <code>vim</code>. I'm still at the survival stage, but honestly, it's going pretty fast. Not used to navigating text in this manner yet, but I figure I'll stick with it - certainly can't hurt.</p>
-
-<p>I'll be trying to write regular posts on my experiences and my progress. More to follow.</p>
 ]]></content>
   </entry>
   

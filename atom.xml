@@ -4,7 +4,7 @@
   <title><![CDATA[zwilias]]></title>
   <link href="http://zwilias.github.com/atom.xml" rel="self"/>
   <link href="http://zwilias.github.com/"/>
-  <updated>2011-11-30T00:19:32+01:00</updated>
+  <updated>2011-12-03T15:58:14+01:00</updated>
   <id>http://zwilias.github.com/</id>
   <author>
     <name><![CDATA[Ilias Van Peer]]></name>
@@ -12,6 +12,142 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Choose your weapons]]></title>
+    <link href="http://zwilias.github.com/blog/2011/12/03/choose-your-weapons/"/>
+    <updated>2011-12-03T13:33:00+01:00</updated>
+    <id>http://zwilias.github.com/blog/2011/12/03/choose-your-weapons</id>
+    <content type="html"><![CDATA[<p>After mere days of living life the CLI way, my favorite set of tools has changed
+considerably. A week ago, my tools of choice were:</p>
+
+<ul>
+<li>Macports for package management</li>
+<li>Bash as a shell, running in Terminal.app</li>
+<li>Simple tabs in the terminal for handling multiple sessions, or GNU Screen if I
+was feeling fancy</li>
+<li>nano for editing files</li>
+</ul>
+
+
+<p>Additionally, I never bothered with making any of these tools work or look the
+way I wanted them to work and look. If I ever even bothered configuring anything
+(you know, making some bash aliases or whatever), all of that configuration was
+just dumped into the appropriate config file, without any order to it, without
+any comments, without any structure.</p>
+
+<p>This has changed.</p>
+
+<h3>Homebrew</h3>
+
+<p>Macports works fine, but homebrew works great. It tries to use as much of the
+apple-supplied libs as possible, while offering the option to install your own
+python/perl/whatever. What really sets it apart is that it&#8217;s built on Git.
+Change any of the so-called Formulae (using <code>brew edit</code>) and upstream changes
+are just merged in. It is fairly awesome. Creating new Formulae? <code>brew create</code>.
+Did I mention how these Formulae are exceedingly simple (but flexible,
+extensible, and capable of complex things) ruby classes?</p>
+
+<figure class='code'><figcaption><span>Example Formula </span><a href='http://mxcl.github.com/homebrew/'>The Homebrew homepage</a></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="nb">require</span> <span class="s1">&#39;formula&#39;</span>
+</span><span class='line'>
+</span><span class='line'><span class="k">class</span> <span class="nc">Wget</span> <span class="o">&lt;</span> <span class="no">Formula</span>
+</span><span class='line'>  <span class="n">homepage</span> <span class="s1">&#39;http://www.gnu.org/wget/&#39;</span>
+</span><span class='line'>  <span class="n">url</span> <span class="s1">&#39;http://ftp.gnu.org/wget-1.12.tar.gz&#39;</span>
+</span><span class='line'>  <span class="n">md5</span> <span class="s1">&#39;308a5476fc096a8a525d07279a6f6aa3&#39;</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="k">def</span> <span class="nf">install</span>
+</span><span class='line'>    <span class="nb">system</span> <span class="s2">&quot;./configure --prefix=</span><span class="si">#{</span><span class="n">prefix</span><span class="si">}</span><span class="s2">&quot;</span>
+</span><span class='line'>    <span class="nb">system</span> <span class="s1">&#39;make install&#39;</span>
+</span><span class='line'>  <span class="k">end</span>
+</span><span class='line'><span class="k">end</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Seriously, how simple could it be? Definitely worth checking out.</p>
+
+<h3>Zsh</h3>
+
+<p>Zsh is alternative shell, in many ways very similar to bash, yet decidedly
+different. For one, it&#8217;s goal seems to be something along the lines of
+&#8220;implement everything every other shell can do&#8221;, meaning it&#8217;s extremely
+full-featured, yet, very, <em>very</em> lean. There&#8217;s another reason I switched to zsh,
+though: <a href="https://github.com/holman/dotfiles">holman&#8217;s dotfiles</a>. More on that
+later.</p>
+
+<h3>iTerm2</h3>
+
+<p>iTerm2 is a <em>free</em> replacement for Terminal.app, and the successor to iTerm. It
+lets you get work done, and it lets you choose how. It&#8217;s extremely configurable
+and in my experience, does all this with less memory than Terminal.app could
+manage. For me, though, its killer feature is a simple one: fullscreen mode,
+circumventing Lion&#8217;s fullscreen thing. Lion&#8217;s fullscreen apps blank out all
+monitors except for your primary monitor. I understand the reasoning (fullscreen
+= distraction-free = remove all possible distractions), but I don&#8217;t want it. Say
+I&#8217;m doing web-development. I&#8217;d have a text-editor (vim, nowadays) open in my
+terminal, in fullscreen mode, and a browser on my second monitor. A simple
+use-case that justifies having the option to allow me to use both my monitors.
+Even in fullscreen, &#8220;distraction free&#8221; mode.</p>
+
+<h3>tmux</h3>
+
+<p>Tmux is a modern, BSD replacement for screen. GNU Screen, that is. There are
+many problems with GNU Screen. First and foremost, it is pretty much dead. Even
+if it weren&#8217;t, though, it is buggy, the code is unstructured, unmaintainable and
+really just discourages improvements. It&#8217;s configuration syntax is notorously
+complicated and obtuse, too. And perhaps worst of all, it doesn&#8217;t even support
+vertical splitting by default. There is a patch, but why would a v4.something
+piece of software need an external patch to provide such basic functionality? I
+mean, it&#8217;s a terminal multiplexer, that&#8217;s really the least it should be able to
+do. Tmux is, in all of the above regards, better. It provides a clean,
+well-documented client-server model, a simple configuration syntax, it&#8217;s
+relatively bugfree (for as far as I&#8217;ve noticed) and best of all, super-low
+memory usage. Screen goes up to about 50 MB with just a few windows open
+<em>easily</em>, while tmux hasn&#8217;t even hit 10 MB here. Wonderful!</p>
+
+<h3>vim</h3>
+
+<p>I&#8217;ll leave the explaining of why vim rocks to Ryan Smith and Allen Riddle who
+have created a <a href="http://vimeo.com/6246476" title="Why Vim Rocks (One editor to rule them all) - Part 1">wonderful</a>
+<a href="http://vimeo.com/6246492" title="Why Vim Rocks (One editor to rule them all) - Part 2">three-part</a>
+<a href="http://vimeo.com/6255868" title="Why Vim Rocks (One editor to rule them all) - Part 3">video series</a>
+on Why Vim Rocks.</p>
+
+<h3>Solarized</h3>
+
+<p>Imagine a color palette, designed for use in both terminal and gui applications,
+that&#8217;s easy on the eye (sufficiently low contrast), yet perfect for syntax
+highlighting readability (due to contrasting hues based on exact colorwheel
+relations), that comes in both a light abd a dark variety, can be mixed down to
+a variety of 5 color palettes that aren&#8217;t overwhelming yet have a strong
+personality, and is available for a shitload of different tools. Excited? Well,
+rejoice, it exists. Introducing, Ethan Schoonover&#8217;s
+<a href="http://ethanschoonover.com/solarized">solarized</a>. I use it as the theme for
+iTerm2, my tmux config uses the solarized colors, I&#8217;ve the vim theme installed,
+and even mutt, my mailclient, is solarized.</p>
+
+<h3>dotfiles</h3>
+
+<p>I&#8217;m just going to link to holman&#8217;s blogpost about why
+<a href="http://zachholman.com/2010/08/dotfiles-are-meant-to-be-forked/" title="Zach Holman says: Dotfiles are meant to be forked">his dotfiles project is awesome</a>
+. And then point you to
+<a href="https://github.com/zwilias/dotfiles">my fork of his dotfiles</a>, including my tmux
+configuration, as well as solarized palettes for both vim and tmux.</p>
+
+<p>&#8230; Ok, enough.</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Living life the CLI way - an experiment]]></title>
