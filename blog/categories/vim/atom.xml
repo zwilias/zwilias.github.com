@@ -4,7 +4,7 @@
   <title><![CDATA[Category: vim | zwilias]]></title>
   <link href="http://zwilias.github.com/blog/categories/vim/atom.xml" rel="self"/>
   <link href="http://zwilias.github.com/"/>
-  <updated>2011-12-03T15:58:14+01:00</updated>
+  <updated>2011-12-04T02:41:48+01:00</updated>
   <id>http://zwilias.github.com/</id>
   <author>
     <name><![CDATA[Ilias Van Peer]]></name>
@@ -37,6 +37,11 @@ just dumped into the appropriate config file, without any order to it, without
 any comments, without any structure.</p>
 
 <p>This has changed.</p>
+
+<!--more-->
+
+
+<p></p>
 
 <h3>Homebrew</h3>
 
