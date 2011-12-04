@@ -14,6 +14,8 @@ categories:
 - dotfiles
 ---
 
+*Edit: Added "Resources" section, make my English look slightly less bad*
+
 After mere days of living life the CLI way, my favorite set of tools has changed
 considerably. A week ago, my tools of choice were:
 
@@ -62,7 +64,7 @@ Seriously, how simple could it be? Definitely worth checking out.
 ### Zsh ###
 
 Zsh is alternative shell, in many ways very similar to bash, yet decidedly
-different. For one, it's goal seems to be something along the lines of
+different. For one, its goal seems to be something along the lines of
 "implement everything every other shell can do", meaning it's extremely
 full-featured, yet, very, *very* lean. There's another reason I switched to zsh,
 though: [holman's dotfiles](https://github.com/holman/dotfiles). More on that
@@ -127,4 +129,32 @@ I'm just going to link to holman's blogpost about why
 [my fork of his dotfiles](https://github.com/zwilias/dotfiles), including my tmux 
 configuration, as well as solarized palettes for both vim and tmux.
 
-... Ok, enough.
+---
+
+### Resources ###
+
+Because it can never hurt to find out more.
+
+- Homebrew
+  - [Homepage](http://mxcl.github.com/homebrew/)
+  - [Wiki page](https://github.com/mxcl/homebrew/wiki) with installation
+    instructions, ...
+  - [Blogpost comparing Homebrew, MacPorts and Fink](http://tedwise.com/2010/08/28/homebrew-vs-macports/)
+- Zsh
+  - [Homepage](http://zsh.sourceforge.net/)
+  - [An old but useful 'guide to Z-Shell'](http://zsh.sourceforge.net/Guide/zshguide.html)
+  - [The manual.](http://zsh.sourceforge.net/Doc/Release/zsh_toc.html) - Good
+    luck reading that.
+  - [Incredible (seriously) "collection" of functions, auto-complete helpers, ... for Zsh](https://github.com/robbyrussell/oh-my-zsh)
+- iTerm2
+  - [Homepage](http://www.iterm2.com/#/section/home)
+  - [Documentation](http://www.iterm2.com/#/section/documentation)
+  - [Solarized color presets](https://github.com/altercation/solarized/tree/master/iterm2-colors-solarized)
+- tmux
+  - [Homepage](http://tmux.sourceforge.net/)
+  - [FAQ](http://tmux.svn.sourceforge.net/viewvc/tmux/trunk/FAQ), including an
+    interesting section detailing what it is that sets tmux apart from GNU
+    screen.
+  - [Solarized color theme](https://github.com/seebi/tmux-colors-solarized)
+- vim: Honestly, there's so much out there, you're probably better of googling
+  around yourself.
