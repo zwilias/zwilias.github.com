@@ -30,6 +30,7 @@ just dumped into the appropriate config file, without any order to it, without
 any comments, without any structure.
 
 This has changed.
+<!--more--> 
 
 ### Homebrew ###
 

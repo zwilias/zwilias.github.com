@@ -17,7 +17,7 @@ Now that that's out of the way...
 Like most people who like fiddling with things - and more often than not, breaking them along the way - I occasionally come into contact with the terminal. Be it to simply run some command that don't have a graphical interface, simply to play around with a world where everything is basically text, or because I feel a CLI allows me to do certain things faster, more efficient. 
 
 As such, I'm going to do a little experiment.
-
+<!--more--> 
 ### The Experiment ###
 
 It's really quite simple: use my computer the way I usually do, but instead of using graphical interfaces, do it on the commandline.
