@@ -4,7 +4,7 @@
   <title><![CDATA[zwilias]]></title>
   <link href="http://zwilias.github.com/atom.xml" rel="self"/>
   <link href="http://zwilias.github.com/"/>
-  <updated>2011-12-05T00:23:44+01:00</updated>
+  <updated>2011-12-10T22:29:19+01:00</updated>
   <id>http://zwilias.github.com/</id>
   <author>
     <name><![CDATA[Ilias Van Peer]]></name>
@@ -12,6 +12,104 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Why, oh, why]]></title>
+    <link href="http://zwilias.github.com/blog/2011/12/10/why-oh-why/"/>
+    <updated>2011-12-10T21:55:00+01:00</updated>
+    <id>http://zwilias.github.com/blog/2011/12/10/why-oh-why</id>
+    <content type="html"><![CDATA[<p>The other day, I ran across the blog of another KHLeuven student,
+<a href="http://it-ca.net/blogdylan/">Dylan Meeus&#8217; blog</a> that is. Aside from that blog
+being the complete inverse of mine (he&#8217;s doing everything in GUI&#8217;s on microsoft
+tools on windows, whereas I&#8217;m doing everything on the CLI on BSD tools on a mac)
+, one thing caught my attention. Specifically, a
+<a href="http://it-ca.net/blogdylan/?p=29">blog post about &#8220;quick&#8221; filerenaming</a>.
+Basically, a friend of his, who apparently works for a game development company,
+needed a quick way to rename a bunch of files to -1.jpg -> -n.jpg. And
+apparently, he needed help doing that. So Dylan wrote him an application (in VB)
+to do this job for him.</p>
+
+<!--more-->
+
+
+<p>For reference, here&#8217;s the complete code:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+<span class='line-number'>25</span>
+<span class='line-number'>26</span>
+<span class='line-number'>27</span>
+<span class='line-number'>28</span>
+</pre></td><td class='code'><pre><code class='vbnet'><span class='line'><span class="k">Dim</span> <span class="n">s</span> <span class="ow">As</span> <span class="kt">String</span>
+</span><span class='line'><span class="k">Dim</span> <span class="n">Filepath</span> <span class="ow">As</span> <span class="kt">String</span>
+</span><span class='line'><span class="k">Dim</span> <span class="n">n</span> <span class="ow">As</span> <span class="kt">Double</span>
+</span><span class='line'><span class="n">n</span> <span class="o">=</span> <span class="mi">1</span>
+</span><span class='line'><span class="k">Dim</span> <span class="n">m</span> <span class="ow">As</span> <span class="kt">String</span>
+</span><span class='line'><span class="n">m</span> <span class="o">=</span> <span class="s">&quot;-&quot;</span>
+</span><span class='line'><span class="k">Dim</span> <span class="n">ns</span> <span class="ow">As</span> <span class="kt">String</span>
+</span><span class='line'><span class="k">Dim</span> <span class="n">nname</span> <span class="ow">As</span> <span class="kt">String</span>
+</span><span class='line'>
+</span><span class='line'><span class="k">Dim</span> <span class="n">p</span> <span class="ow">As</span> <span class="kt">String</span>
+</span><span class='line'>
+</span><span class='line'><span class="n">Filepath</span> <span class="o">=</span> <span class="s">&quot;C:\Thoughtwire\&quot;</span>
+</span><span class='line'>
+</span><span class='line'><span class="n">s</span> <span class="o">=</span> <span class="n">Dir</span><span class="p">(</span><span class="n">Filepath</span><span class="p">,</span> <span class="n">vbDirectory</span><span class="p">)</span>
+</span><span class='line'>
+</span><span class='line'><span class="k">Do</span> <span class="k">While</span> <span class="n">Len</span><span class="p">(</span><span class="n">s</span><span class="p">)</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="k">If</span> <span class="n">s</span> <span class="o">&lt;&gt;</span> <span class="s">&quot;.&quot;</span> <span class="ow">And</span> <span class="n">s</span> <span class="o">&lt;&gt;</span> <span class="s">&quot;..&quot;</span> <span class="k">Then</span>
+</span><span class='line'>
+</span><span class='line'>        <span class="n">ns</span> <span class="o">=</span> <span class="n">m</span> <span class="o">&amp;</span> <span class="n">n</span>
+</span><span class='line'>        <span class="n">nname</span> <span class="o">=</span> <span class="n">ns</span> <span class="o">&amp;</span> <span class="s">&quot;.jpg&quot;</span>
+</span><span class='line'>        <span class="n">torename</span><span class="p">.</span><span class="n">Text</span> <span class="o">=</span> <span class="n">torename</span><span class="p">.</span><span class="n">Text</span> <span class="o">+</span> <span class="n">s</span>
+</span><span class='line'>        <span class="n">My</span><span class="p">.</span><span class="n">Computer</span><span class="p">.</span><span class="n">FileSystem</span><span class="p">.</span><span class="n">RenameFile</span><span class="p">(</span><span class="s">&quot;C:\Thoughtwire\&quot;</span> <span class="o">&amp;</span> <span class="n">s</span><span class="p">,</span> <span class="n">nname</span><span class="p">)</span>
+</span><span class='line'>        <span class="n">n</span> <span class="o">=</span> <span class="n">n</span> <span class="o">+</span> <span class="mi">1</span>
+</span><span class='line'>    <span class="k">End</span> <span class="k">If</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="n">s</span> <span class="o">=</span> <span class="n">Dir</span><span class="p">()</span>
+</span><span class='line'><span class="k">Loop</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>So what&#8217;s the problem then?</p>
+
+<p>Well, it just irks me. Several things about this just irk me. For one, this guy
+works at a game-development company and can&#8217;t figure this out for himself or ask
+any of his collegues. Worse yet, when someone finally helps the guy out, he ends
+up with a Visual Basic program. But perhaps the worst thing about all of this,
+is how simply this could&#8217;ve been solved in a shell language leveraging some UNIX
+tools. For example, the equivalent of the above abomination:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'><span class="nv">c</span><span class="o">=</span>1; <span class="k">for </span>f in *; <span class="k">do </span>mv <span class="s2">&quot;$f&quot;</span> <span class="s2">&quot;-$c.jpg&quot;</span>; <span class="nb">let </span><span class="nv">c</span><span class="o">=</span>c+1; <span class="k">done</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>&#8230; But no, they come up with a Visual Basic program. Ugh. Why, oh, why?</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Choose your weapons]]></title>
