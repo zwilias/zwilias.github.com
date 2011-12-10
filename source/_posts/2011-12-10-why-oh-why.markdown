@@ -1,0 +1,68 @@
+---
+layout: post
+title: "Why, oh, why"
+date: 2011-12-10 21:55
+comments: true
+categories: 
+---
+The other day, I ran across the blog of another KHLeuven student, 
+[Dylan Meeus' blog](http://it-ca.net/blogdylan/) that is. Aside from that blog
+being the complete inverse of mine (he's doing everything in GUI's on microsoft
+tools on windows, whereas I'm doing everything on the CLI on BSD tools on a mac)
+, one thing caught my attention. Specifically, a 
+[blog post about "quick" filerenaming](http://it-ca.net/blogdylan/?p=29). 
+Basically, a friend of his, who apparently works for a game development company,
+needed a quick way to rename a bunch of files to -1.jpg -> -n.jpg. And 
+apparently, he needed help doing that. So Dylan wrote him an application (in VB)
+to do this job for him.
+
+<!--more-->
+
+For reference, here's the complete code:
+
+``` vbnet
+Dim s As String
+Dim Filepath As String
+Dim n As Double
+n = 1
+Dim m As String
+m = "-"
+Dim ns As String
+Dim nname As String
+
+Dim p As String
+
+Filepath = "C:\Thoughtwire\"
+
+s = Dir(Filepath, vbDirectory)
+
+Do While Len(s)
+
+    If s <> "." And s <> ".." Then
+
+        ns = m & n
+        nname = ns & ".jpg"
+        torename.Text = torename.Text + s
+        My.Computer.FileSystem.RenameFile("C:\Thoughtwire\" & s, nname)
+        n = n + 1
+    End If
+
+    s = Dir()
+Loop
+```
+
+So what's the problem then?
+
+Well, it just irks me. Several things about this just irk me. For one, this guy
+works at a game-development company and can't figure this out for himself or ask
+any of his collegues. Worse yet, when someone finally helps the guy out, he ends
+up with a Visual Basic program. But perhaps the worst thing about all of this,
+is how simply this could've been solved in a shell language leveraging some UNIX
+tools. For example, the equivalent of the above abomination:
+
+``` bash
+c=1; for f in *; do mv "$f" "-$c.jpg"; let c=c+1; done
+```
+
+... But no, they come up with a Visual Basic program. Ugh. Why, oh, why?
+
