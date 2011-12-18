@@ -1,0 +1,33 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<urlset xmlns='http://www.sitemaps.org/schemas/sitemap/0.9'>
+    <url>
+        <loc>
+            http://zwilias.github.com/blog/2011/11/29/living-life-the-cli-way-an-experiment/
+        </loc>
+        <lastmod>2011-12-18T16:41:12+01:00</lastmod>
+    </url>
+    <url>
+        <loc>http://zwilias.github.com/blog/2011/12/03/choose-your-weapons/</loc>
+        <lastmod>2011-12-18T16:41:12+01:00</lastmod>
+    </url>
+    <url>
+        <loc>http://zwilias.github.com/blog/2011/12/10/why-oh-why/</loc>
+        <lastmod>2011-12-18T16:41:12+01:00</lastmod>
+    </url>
+    <url>
+        <loc>http://zwilias.github.com/about/</loc>
+        <lastmod>2011-12-18T16:44:39+01:00</lastmod>
+    </url>
+    <url>
+        <loc>http://zwilias.github.com/blog/archives/</loc>
+        <lastmod>2011-12-18T16:41:12+01:00</lastmod>
+    </url>
+    <url>
+        <loc>http://zwilias.github.com/</loc>
+        <lastmod>2011-12-18T16:41:12+01:00</lastmod>
+    </url>
+    <url>
+        <loc>http://zwilias.github.com/pubkey.asc</loc>
+        <lastmod>2011-12-18T16:41:46+01:00</lastmod>
+    </url>
+</urlset>

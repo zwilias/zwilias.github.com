@@ -1,0 +1,235 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: cli | zwilias]]></title>
+  <link href="http://zwilias.github.com/blog/categories/cli/atom.xml" rel="self"/>
+  <link href="http://zwilias.github.com/"/>
+  <updated>2011-12-18T16:50:29+01:00</updated>
+  <id>http://zwilias.github.com/</id>
+  <author>
+    <name><![CDATA[Ilias Van Peer]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Choose your weapons]]></title>
+    <link href="http://zwilias.github.com/blog/2011/12/03/choose-your-weapons/"/>
+    <updated>2011-12-03T13:33:00+01:00</updated>
+    <id>http://zwilias.github.com/blog/2011/12/03/choose-your-weapons</id>
+    <content type="html"><![CDATA[<p><em>Edit: Added "Resources" section, make my English look slightly less bad</em></p>
+
+<p>After mere days of living life the CLI way, my favorite set of tools has changed
+considerably. A week ago, my tools of choice were:</p>
+
+<ul>
+<li>Macports for package management</li>
+<li>Bash as a shell, running in Terminal.app</li>
+<li>Simple tabs in the terminal for handling multiple sessions, or GNU Screen if I
+was feeling fancy</li>
+<li>nano for editing files</li>
+</ul>
+
+
+<p>Additionally, I never bothered with making any of these tools work or look the
+way I wanted them to work and look. If I ever even bothered configuring anything
+(you know, making some bash aliases or whatever), all of that configuration was
+just dumped into the appropriate config file, without any order to it, without
+any comments, without any structure.</p>
+
+<p>This has changed.</p>
+
+<!--more-->
+
+
+<p></p>
+
+<h3>Homebrew</h3>
+
+<p>Macports works fine, but homebrew works great. It tries to use as much of the
+apple-supplied libs as possible, while offering the option to install your own
+python/perl/whatever. What really sets it apart is that it's built on Git.
+Change any of the so-called Formulae (using <code>brew edit</code>) and upstream changes
+are just merged in. It is fairly awesome. Creating new Formulae? <code>brew create</code>.
+Did I mention how these Formulae are exceedingly simple (but flexible,
+extensible, and capable of complex things) ruby classes?</p>
+
+<p>``` ruby Example Formula http://mxcl.github.com/homebrew/ The Homebrew homepage
+require 'formula'</p>
+
+<p>class Wget &lt; Formula
+  homepage 'http://www.gnu.org/wget/'
+  url 'http://ftp.gnu.org/wget-1.12.tar.gz'
+  md5 '308a5476fc096a8a525d07279a6f6aa3'</p>
+
+<p>  def install</p>
+
+<pre><code>system "./configure --prefix=#{prefix}"
+system 'make install'
+</code></pre>
+
+<p>  end
+end
+```</p>
+
+<p>Seriously, how simple could it be? Definitely worth checking out.</p>
+
+<h3>Zsh</h3>
+
+<p>Zsh is alternative shell, in many ways very similar to bash, yet decidedly
+different. For one, its goal seems to be something along the lines of
+"implement everything every other shell can do", meaning it's extremely
+full-featured, yet, very, <em>very</em> lean. There's another reason I switched to zsh,
+though: <a href="https://github.com/holman/dotfiles">holman's dotfiles</a>. More on that
+later.</p>
+
+<h3>iTerm2</h3>
+
+<p>iTerm2 is a <em>free</em> replacement for Terminal.app, and the successor to iTerm. It
+lets you get work done, and it lets you choose how. It's extremely configurable
+and in my experience, does all this with less memory than Terminal.app could
+manage. For me, though, its killer feature is a simple one: fullscreen mode,
+circumventing Lion's fullscreen thing. Lion's fullscreen apps blank out all
+monitors except for your primary monitor. I understand the reasoning (fullscreen
+= distraction-free = remove all possible distractions), but I don't want it. Say
+I'm doing web-development. I'd have a text-editor (vim, nowadays) open in my
+terminal, in fullscreen mode, and a browser on my second monitor. A simple
+use-case that justifies having the option to allow me to use both my monitors.
+Even in fullscreen, "distraction free" mode.</p>
+
+<h3>tmux</h3>
+
+<p>Tmux is a modern, BSD replacement for screen. GNU Screen, that is. There are
+many problems with GNU Screen. First and foremost, it is pretty much dead. Even
+if it weren't, though, it is buggy, the code is unstructured, unmaintainable and
+really just discourages improvements. It's configuration syntax is notorously
+complicated and obtuse, too. And perhaps worst of all, it doesn't even support
+vertical splitting by default. There is a patch, but why would a v4.something
+piece of software need an external patch to provide such basic functionality? I
+mean, it's a terminal multiplexer, that's really the least it should be able to
+do. Tmux is, in all of the above regards, better. It provides a clean,
+well-documented client-server model, a simple configuration syntax, it's
+relatively bugfree (for as far as I've noticed) and best of all, super-low
+memory usage. Screen goes up to about 50 MB with just a few windows open
+<em>easily</em>, while tmux hasn't even hit 10 MB here. Wonderful!</p>
+
+<h3>vim</h3>
+
+<p>I'll leave the explaining of why vim rocks to Ryan Smith and Allen Riddle who
+have created a <a href="http://vimeo.com/6246476" title="Why Vim Rocks (One editor to rule them all) - Part 1">wonderful</a>
+<a href="http://vimeo.com/6246492" title="Why Vim Rocks (One editor to rule them all) - Part 2">three-part</a>
+<a href="http://vimeo.com/6255868" title="Why Vim Rocks (One editor to rule them all) - Part 3">video series</a>
+on Why Vim Rocks.</p>
+
+<h3>Solarized</h3>
+
+<p>Imagine a color palette, designed for use in both terminal and gui applications,
+that's easy on the eye (sufficiently low contrast), yet perfect for syntax
+highlighting readability (due to contrasting hues based on exact colorwheel
+relations), that comes in both a light abd a dark variety, can be mixed down to
+a variety of 5 color palettes that aren't overwhelming yet have a strong
+personality, and is available for a shitload of different tools. Excited? Well,
+rejoice, it exists. Introducing, Ethan Schoonover's
+<a href="http://ethanschoonover.com/solarized">solarized</a>. I use it as the theme for
+iTerm2, my tmux config uses the solarized colors, I've the vim theme installed,
+and even mutt, my mailclient, is solarized.</p>
+
+<h3>dotfiles</h3>
+
+<p>I'm just going to link to holman's blogpost about why
+<a href="http://zachholman.com/2010/08/dotfiles-are-meant-to-be-forked/" title="Zach Holman says: Dotfiles are meant to be forked">his dotfiles project is awesome</a>
+. And then point you to
+<a href="https://github.com/zwilias/dotfiles">my fork of his dotfiles</a>, including my tmux
+configuration, as well as solarized palettes for both vim and tmux.</p>
+
+<hr />
+
+<h3>Resources</h3>
+
+<p>Because it can never hurt to find out more.</p>
+
+<ul>
+<li>Homebrew
+
+<ul>
+<li><a href="http://mxcl.github.com/homebrew/">Homepage</a></li>
+<li><a href="https://github.com/mxcl/homebrew/wiki">Wiki page</a> with installation
+instructions, ...</li>
+<li><a href="http://tedwise.com/2010/08/28/homebrew-vs-macports/">Blogpost comparing Homebrew, MacPorts and Fink</a></li>
+</ul>
+</li>
+<li>Zsh
+
+<ul>
+<li><a href="http://zsh.sourceforge.net/">Homepage</a></li>
+<li><a href="http://zsh.sourceforge.net/Guide/zshguide.html">An old but useful 'guide to Z-Shell'</a></li>
+<li><a href="http://zsh.sourceforge.net/Doc/Release/zsh_toc.html">The manual.</a> - Good
+luck reading that.</li>
+<li><a href="https://github.com/robbyrussell/oh-my-zsh">Incredible (seriously) "collection" of functions, auto-complete helpers, ... for Zsh</a></li>
+</ul>
+</li>
+<li>iTerm2
+
+<ul>
+<li><a href="http://www.iterm2.com/#/section/home">Homepage</a></li>
+<li><a href="http://www.iterm2.com/#/section/documentation">Documentation</a></li>
+<li><a href="https://github.com/altercation/solarized/tree/master/iterm2-colors-solarized">Solarized color presets</a></li>
+</ul>
+</li>
+<li>tmux
+
+<ul>
+<li><a href="http://tmux.sourceforge.net/">Homepage</a></li>
+<li><a href="http://tmux.svn.sourceforge.net/viewvc/tmux/trunk/FAQ">FAQ</a>, including an
+interesting section detailing what it is that sets tmux apart from GNU
+screen.</li>
+<li><a href="https://github.com/seebi/tmux-colors-solarized">Solarized color theme</a></li>
+</ul>
+</li>
+<li>vim: Honestly, there's so much out there, you're probably better of googling
+around yourself.</li>
+</ul>
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Living life the CLI way - an experiment]]></title>
+    <link href="http://zwilias.github.com/blog/2011/11/29/living-life-the-cli-way-an-experiment/"/>
+    <updated>2011-11-29T21:52:00+01:00</updated>
+    <id>http://zwilias.github.com/blog/2011/11/29/living-life-the-cli-way-an-experiment</id>
+    <content type="html"><![CDATA[<h3>First off</h3>
+
+<p>Hello, world! Seeing as how this is my first real blogpost ever, I figure that was mandatory.</p>
+
+<p>Now that that's out of the way...</p>
+
+<h3>Preface</h3>
+
+<p>Like most people who like fiddling with things - and more often than not, breaking them along the way - I occasionally come into contact with the terminal. Be it to simply run some command that don't have a graphical interface, simply to play around with a world where everything is basically text, or because I feel a CLI allows me to do certain things faster, more efficient.</p>
+
+<p>As such, I'm going to do a little experiment.</p>
+
+<!--more-->
+
+
+<p></p>
+
+<h3>The Experiment</h3>
+
+<p>It's really quite simple: use my computer the way I usually do, but instead of using graphical interfaces, do it on the commandline.</p>
+
+<p>There's a certain temptation to simply say I'm trying to find command-line replacements for my regular applications and using those instead, but that's missing the point. My goal is to use the command-line as a command-line, not merely a replacement. Find alternative workflows, find better, faster, more time-efficient ways of doing things. And during all of that: learn. Become used to having your hands on your keyboard, using that to navigate my computer, my documents, my code, the internet.</p>
+
+<h3>First babysteps</h3>
+
+<p>And this blogpost right here, is my first step in that direction. I created, edited, previewed and deployed (published, in blogtalk) this post entirely on the command-line, using tools such as <code>rake</code> - the ruby equivalent of <code>make</code> (this blog is powered by <a href="http://octopress.org/">octopress</a>, a blog-aware static site generator built on top of jekyll, written in ruby), <code>vim</code> - a powerful (or so I hear) commandline text-editor, <code>links</code> - a commandline browser, great tool for usability testing, too, and once more, a <code>rake</code> task.</p>
+
+<p>I've ran into <code>rake</code> before, and I've used <code>links</code> for commandline browsing before as well. Never before, though, have I had the guts to dive into <code>vim</code>, head-first. Guiding me through this journey of sorts is a fun little blogpost by <a href="http://yannesposito.com/" title="Yann's homepage">Yann Esposito</a> titled <a href="http://yannesposito.com/Scratch/en/blog/Learn-Vim-Progressively/">Learn Vim Progressively</a> - an excellent startingpoint (I hope) for anyone looking to get into <code>vim</code>. I'm still at the survival stage, but honestly, it's going pretty fast. Not used to navigating text in this manner yet, but I figure I'll stick with it - certainly can't hurt.</p>
+
+<p>I'll be trying to write regular posts on my experiences and my progress. More to follow.</p>
+]]></content>
+  </entry>
+  
+</feed>
