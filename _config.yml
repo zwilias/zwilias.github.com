@@ -10,7 +10,8 @@ bio: Coffee. Code. Other stuff.
 external-image: false
 picture: assets/images/profile.png
 
-url: http://ilias.xyz
+url: https://ilias.xyz
+enforce_ssl: ilias.xyz
 # your url: http://USERNAME.github.io
 
 permalink: /:title/
