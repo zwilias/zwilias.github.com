@@ -20,7 +20,7 @@ markdown: kramdown
 highlighter: rouge
 
 # To enable google analytics, supply your token below
-# analytics-google: 'UA-MYANALYTICS'
+analytics-google: 'UA-27384029-1'
 
 # To enable piwik tracking, supply your url & site ID below
 # analytics-piwik-url: 'piwik.my-host.com'
@@ -52,9 +52,7 @@ soundcloud: zwilias
 # normal = 560px / large = 810px
 width: large
 
-# if you don't need pagination, comment the *paginate* configs below
-# paginate: 5
-# paginate_path: "blog/:num/"
+# For identifying the author at the bottom of posts
 authors:
     ilias:
         name: Ilias Van Peer
@@ -63,11 +61,9 @@ authors:
         picture: assets/images/profile.png
         #twitter: johndoe
 
-# if you don't need projects, comment the *projects* configs below
+# Sections
 projects: true
-
-# if you don't need "about" or "blog", comment them out below
-about: false
+about: true
 blog: false
 
 # do you want to show the "read time" of the posts?
@@ -100,6 +96,10 @@ gems:
   - jekyll-sitemap
   - jekyll-gist
   - jekyll-paginate
+  - jekyll-timeago
+
+jekyll_timeago:
+  depth: 4 # Level of detail
 
 jekyll-mentions:
     base_url: https://github.com
