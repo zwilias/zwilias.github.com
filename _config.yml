@@ -98,8 +98,5 @@ gems:
   - jekyll-paginate
   - jekyll-timeago
 
-jekyll_timeago:
-  depth: 4 # Level of detail
-
 jekyll-mentions:
     base_url: https://github.com
