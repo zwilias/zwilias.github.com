@@ -9,9 +9,13 @@
         height: 35px
         width: 35px
 
+        > .icon
+            transition: transform 150ms ease-in-out
+
         &:hover
             > .icon
                 fill: $delta
+                transform: scale(1.5)
 
         &:hover:before
             opacity: 1

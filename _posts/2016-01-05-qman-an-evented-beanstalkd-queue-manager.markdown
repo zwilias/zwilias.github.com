@@ -251,7 +251,7 @@ suffer too badly and all code is thoroughly unit-tested.
 
 Running the tests locally:
 
-```
+```shell_session
 $ git clone https://github.com/zwilias/qman.git
 $ cd qman
 $ composer install

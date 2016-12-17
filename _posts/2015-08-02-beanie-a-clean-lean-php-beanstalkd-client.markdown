@@ -123,7 +123,7 @@ array_map(
 
 Installation is recommended to happen through [composer](https://getcomposer.org/).
 
-```
+```shell_session
 # Install composer
 $ curl -sS https://getcomposer.org/installer | php
 
@@ -170,7 +170,7 @@ suffer too badly. Make sure you add thorough white-box unit tests and, if applic
 
 Running the tests locally:
 
-```
+```shell_session
 $ git clone https://github.com/zwilias/beanie.git
 $ cd Beanie
 $ composer install
