@@ -48,6 +48,7 @@ A *Producer* exposes the necessary commands to produce jobs on the queue. It ope
 create its jobs on random connections from that pool, as a means of randomly distributing load to the workers.
 
 ```php
+<?php
 use Beanie\Beanie;
 
 // create a Producer for the pool
@@ -69,6 +70,7 @@ level, that each beanstalk queue requires as least on Worker to operate, and you
 all your workers are waiting for a job from a different queue.
 
 ```php
+<?php
 use Beanie\Beanie;
 
 // get a Worker for a named connection in the pool
@@ -94,6 +96,7 @@ your beanstalk instances are performing, or occasionally kicking buried jobs on 
 statistics on every connection and every tube on every connection.
 
 ```php
+<?php
 use Beanie\Beanie;
 use Beanie\Tube\Tube;
 

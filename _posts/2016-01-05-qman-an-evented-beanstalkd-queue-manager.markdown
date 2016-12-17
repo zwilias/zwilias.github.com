@@ -57,6 +57,7 @@ QMan is optimized for multiple beanstalkd instances and a pool of workers listen
 Queueing a closure is quite possibly the easiest thing
 
 ```php
+<?php
 use QMan\QMan;
 
 $qMan = QMan::create(['localhost:11300']);
@@ -68,6 +69,7 @@ $qMan->queueClosure(function () {
 Essentially, this is equivalent to the following:
 
 ```php
+<?php
 use QMan\QMan;
 use QMan\ClosureCommand;
 
@@ -82,6 +84,7 @@ $qMan->queue(ClosureCommand::create(function () {
 Starting a worker with all the defaults injected, is easy:
 
 ```php
+<?php
 use Beanie\Beanie;
 use QMan\WorkerBuilder;
 
@@ -106,6 +109,7 @@ As such, you'll quickly be writing custom commands on a regular basis.
 A command should implement `QMan\CommandInterface`, which is easily done through extending `QMan\AbstractCommand`:
 
 ```php
+<?php
 use QMan\AbstractCommand;
 
 class CustomCommand extends AbstractCommand
@@ -132,6 +136,7 @@ In order for the QMan worker to pick up and execute your command, you'll need to
 `GenericCommandSerializer`. Let's make sure the class we created above is properly registered:
 
 ```php
+<?php
 use Beanie\Beanie;
 use QMan\WorkerBuilder;
 use QMan\GenericCommandSerializer;
@@ -151,6 +156,7 @@ You could easily futureproof your application by gathering this type <-> class m
 constants:
 
 ```php
+<?php
 final class Commands
 {
     const TYPE_CUSTOM_COMMAND = 'my.custom.command';
@@ -183,6 +189,7 @@ Changing configuration is as simple as instantiating `QManConfig`, setting your 
 to the `CommandBuilder`:
 
 ```php
+<?php
 use QMan\QManConfig;
 use QMan\QManBuilder;
 use Beanie\Beanie;
@@ -210,6 +217,7 @@ Overriding this behavior can be done easily by implementing `JobFailureStrategyI
 `LoggerAwareInterface` and qMan's `ConfigAwareInterface`.
 
 ```php
+<?php
 use Psr\Log\LoggerAwareTrait;
 use QMan\JobFailureStrategyInterface;
 use QMan\Job;
