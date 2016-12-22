@@ -1,6 +1,6 @@
 # main text of home
 name: Ilias Van Peer
-bio: Coffee. Code. Other stuff.
+bio: Coffee. Code. Whiskey.
 
 # twitter summary info
 # description: A blog about technology and stuff related
@@ -21,13 +21,7 @@ highlighter: rouge
 
 # To enable google analytics, supply your token below
 analytics-google: 'UA-27384029-1'
-
-# To enable piwik tracking, supply your url & site ID below
-# analytics-piwik-url: 'piwik.my-host.com'
-# analytics-piwik-id: 1
-
-# if you don't want comments in your posts, set to false
-disqus: false
+disqus: ilias-xyz
 
 # if you don't have any of social below, comment the line
 # facebook: myfacebook
@@ -65,24 +59,14 @@ authors:
 # Sections
 projects: true
 about: true
-blog: false
+blog: true
 
-# do you want to show the "read time" of the posts?
+# options
 read-time: true
-
-# do you want to show the "tags" inside the posts?
 show-tags: true
-
-# related posts inside a post?
 related: true
-
-# show next & prev links in blog post?
 blog-nav-links: false
-
-# show author block at the end of a post ?
 show-author: true
-
-# do you want some animations?
 animation: true
 
 sass:

@@ -10,3 +10,14 @@
         width: 50%
         margin: 0 auto
         display: block
+
+.header-link
+    position: absolute
+    left: -1.5em
+    opacity: 0
+    transition: opacity 0.2s ease-in-out 0.1s
+
+h2, h3, h4, h5, h6
+    position: relative
+    &:hover .header-link
+        opacity: 1
