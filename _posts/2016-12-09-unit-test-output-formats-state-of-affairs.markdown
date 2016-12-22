@@ -25,7 +25,7 @@ We're living in modern times. We have an incredible wealth of tooling for our de
 What's odd, however, is the degree of coupling in our test-runners. More specifically, the degree of coupling between the runner itself, and the output format. Running most test-runners on the commandline, will output some pretty, human readable format, and -- after completion -- optionally dump an JUnit XML report somewhere, so your CI environment can pick it up and keep track of your test results.
 
 As an aside, I should probably mention that the JUnit XML format isn't properly specified anywhere. There have been some attempts at creating an XSD for it, but the only real source of truth is the code of the JUnit ANT task. [Read on](http://help.catchsoftware.com/display/ET/JUnit+Format) for more information.
-{:.aside}
+{:.note}
 
 This means, however, that -- in order to get a pretty test tree -- your IDE has to either:
 
@@ -36,7 +36,7 @@ This means, however, that -- in order to get a pretty test tree -- your IDE has 
 Not only that, but this means that, if you upgrade your testing framework, you may lose the ability to run tests in your IDE directly, or have some corner-case situation where half your test results go missing.
 
 *Note*: In all of the above, I'm using "your IDE" as an example. The main point I'm making is that we're dealing with a huge degree of coupling between a test framework and its output format.
-{:.aside}
+{:.note}
 
 So the closest thing we have to a universal test output format is the JUnit XML format, which is an excellent report format, but not a streaming output format.
 
@@ -103,6 +103,10 @@ That is to say - you may structure your tests whichever which way you like, but 
 
 Test output in TAP can (optionally) contain a testnumber. When this testnumber is present, the numbers need to be strictly incrementing. Basically, this is a case of "abusing your identifier". It severely hampers running tests in parallel, too, as you can't just interleave the output of many threads.
 
+### TAP does not have a clear diagnostics format
+
+[TODO]
+
 ---
 
 In conclusion, TAP is rather broken. Many sad.
@@ -112,44 +116,79 @@ In conclusion, TAP is rather broken. Many sad.
     caption="A broken tap. I've seen worse. Courtesy of [yourrepair](http://www.yourrepair.co.uk/broken-tap-what-to-do-before-emergency-plumber-arrives/)"
 %}
 
+## Exit TAP
+
 But can we fix it? I think TAP as a format is not the way to go. Rather, a *new and improved* **generic test output protocol** (or **GTOP** for short) would be required.
 
 Let's start with a number of use cases that should, ultimately, be supported when using this *GTOP*.
 
-Some first use case.
-{:.aside}
+<div markdown="1" class="note">
+A note on wording.
 
-Some other use case.
-{:.aside}
+- **GTOP message**: A message, formatted according to the imaginary GTOP spec.
+- **GTOP stream**: A line-separated list of GTOP messages, with new messages appearing as they are created.
+- **GTOP producer**: A program capable of generating a GTOP stream. Usually, a test-runner or pluggable reporter for a test-runner.
+- **GTOP consumer**: A program capable of receiving a GTOP stream and handling its messages. This will usually entail visualizing the results described by the GTOP stream.
+- **GTOP parser**: A library or module that is leveraged by a GTOP consumer to convert the messages on a GTOP stream into objects or events or whatever you have that can be handled by the consumer.
+</div>
 
-Yet another use case.
-{:.aside}
+**UC1**: As an end user, I can run my unit tests, written using a test-runner capable of generating GTOP output, and visualize the results in my IDE, my CI environment, or -- by piping the output into a command line GTOP consumer -- on the command line.
+{:.highlight}
 
-Now let's extract the requirements from this. Having a list of requirements to work with is always nice..
+**UC2**: As GTOP parser, I am perfectly content handling the output on a line by line basis; and do not need to keep track of previous output in order to verify the validity of the received GTOP output. Ideally, I can use widely available tooling to parse and verify GTOP output, without having to write custom parser logic or keeping it to the bare minimum.
+{:.highlight}
+
+**UC3**: As a GTOP consumer, I am able to deterministically create and update my tree, using the GTOP messages provided to me by the parser. Even though these messages may spawn from different threads or even different processes altogether, this does not influence my ability to keep track of the state of my tree.
+{:.highlight}
+
+**UC4**: As an end user, looking at the visualization of my test results; I should be able to locate the definition of the test file, if supported by the used GOP consumer.
+{:.highlight}
+
+**UC5**: As an end user, I can easily identify *why* my test failed, if supported by the used GOP producer and consumer.
+{:.highlight}
+
+**UC6**: As an end user, I can see that PHPUnit reported risky tests and eslint gave a warning.
+{:.highlight}
+
+Now let's extract some requirements. Having requirements will help us in creating a format, by checking that all requirements can be fulfilled.
 
 - **Must** haves:
 
-  - **R1.** Use a simple, yet **extensible format**
-  - **R2.** Create a simple, **machine parsable specification** for this format
-  - **R3.** Allow **nesting** structures
-  - **R4.** Provide a way to **declare** tests and test suites
-  - **R5.** **Unordered** messages should be possible
+  - **R1.** Use a simple, yet **extensible format**. [Covers: *UC2*]
+  - **R2.** Create a simple, **machine parsable specification** for this format. [Covers: *UC2*]
+  - **R3.** Allow **nesting** structures. [Covers: *UC3*]
+  - **R4.** Provide a way to **declare** tests and test suites. [Covers: *UC3*]
+  - **R5.** **Unordered** messages should be possible. [Covers: *UC3*]
+  - **R6.** Allow multiple types of test failures and passes. [Covers: *UC6*]
 
 - **Nice** to haves:
 
-  - **R6.** Unified way of **encoding** the **location** of tests
-  - **R7.** Codify how to provide **encoded diagnostics** (expected vs actual for assertions, failure message, stack traces, whatever you have)
+  - **R6.** Unified way of **encoding** the **location** of tests. [Covers: *UC4*]
+  - **R7.** Codify how to provide **encoded diagnostics** (expected vs actual for assertions, failure message, stack traces, whatever you have). [Covers: *UC5*]
   - **R8.** Be open for extension, closed for modification. In other words, **best effort forward compatibility**.
 
-Requirements:
+**[UC1]** is covered by the separation of concerns between producer and consumer. **[R8]** is to ensure that the format does not prevent other use cases from arising and other requirements to be created and handled.
 
-[] do I have checkboxes? -> nope.
+---
 
-- simple, well known format.
-- human readability is ok
-- support for declaring tests -> build (partial) tree before finishing it
-- unordered messages to support concurrency
+## Enter GTOP
 
-Proposal:
+GTOP, short for Generic Test Output Protocol, is a proposed protocol to deal with the above requirements. In short, each GTOP message would be a [JSON](http://www.json.org/) object, with each message appearing on its own line. Since JSON is supported in a multitude of languages, this would make it extremely easy to generate the messages using a simple interface.
 
-- ...
+Using [http://json-schema.org/](JSON schema), we can ensure that there's a proper specification for the messages, which developers of GTOP producers can use to validate their output against, and developers of GTOP consumers can use to validate incoming messages.
+
+Other than simply having the protocol, guidelines should also be created (and maintained!), helping the developer community maintain consistent results across the board.
+
+
+
+### Creating adoption
+
+- PHPUnit: https://phpunit.de/manual/current/en/extending-phpunit.html
+- Karma: http://www.ironsrc.com/news/how-to-create-a-custom-karma-reporter-3/
+- ESLint: http://eslint.org/docs/developer-guide/working-with-custom-formatters
+- JetBrains IDE plugin
+- github org: https://github.com/generic-test-output-protocol
+- gtop.ilias.xyz
+- tap-to-gtop filter?
+- gtop-to-tap filter?
+- commandline gtop results reporter
