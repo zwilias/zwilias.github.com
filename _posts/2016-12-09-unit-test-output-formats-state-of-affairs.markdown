@@ -105,7 +105,9 @@ Test output in TAP can (optionally) contain a testnumber. When this testnumber i
 
 ### TAP does not have a clear diagnostics format
 
-[TODO]
+> Currently (2007/03/17) the format of the data structure represented by a YAML block has not been standardized. It is likely that whatever schema emerges will be able to capture the kind of forensic information about a test’s execution seen in the example above.
+
+Almost 10 years later, a standard schema has not yet emerged. So yeah.
 
 ---
 
@@ -133,22 +135,22 @@ A note on wording.
 </div>
 
 **UC1**: As an end user, I can run my unit tests, written using a test-runner capable of generating GTOP output, and visualize the results in my IDE, my CI environment, or -- by piping the output into a command line GTOP consumer -- on the command line.
-{:.highlight}
+{:.jumpout}
 
 **UC2**: As GTOP parser, I am perfectly content handling the output on a line by line basis; and do not need to keep track of previous output in order to verify the validity of the received GTOP output. Ideally, I can use widely available tooling to parse and verify GTOP output, without having to write custom parser logic or keeping it to the bare minimum.
-{:.highlight}
+{:.jumpout}
 
 **UC3**: As a GTOP consumer, I am able to deterministically create and update my tree, using the GTOP messages provided to me by the parser. Even though these messages may spawn from different threads or even different processes altogether, this does not influence my ability to keep track of the state of my tree.
-{:.highlight}
+{:.jumpout}
 
 **UC4**: As an end user, looking at the visualization of my test results; I should be able to locate the definition of the test file, if supported by the used GOP consumer.
-{:.highlight}
+{:.jumpout}
 
 **UC5**: As an end user, I can easily identify *why* my test failed, if supported by the used GOP producer and consumer.
-{:.highlight}
+{:.jumpout}
 
 **UC6**: As an end user, I can see that PHPUnit reported risky tests and eslint gave a warning.
-{:.highlight}
+{:.jumpout}
 
 Now let's extract some requirements. Having requirements will help us in creating a format, by checking that all requirements can be fulfilled.
 
@@ -179,16 +181,79 @@ Using [http://json-schema.org/](JSON schema), we can ensure that there's a prope
 
 Other than simply having the protocol, guidelines should also be created (and maintained!), helping the developer community maintain consistent results across the board.
 
+### Message format
 
+Let's start with the basics. What should a GTOP message look like? In order to somewhat help parsers, I'll suppose its first level should quite simply show the type of message. Now, keeping in mind the GTOP is not supposed to be a format for saving reports, but rather reporting running tests, let's go wild and say that each message should only contain a single entry.
+
+So, let's start with the simplest message I can come up with - 1 single test, no grouping whatsoever.
+
+```json
+{
+    "testResult": {
+        "name": "My test",
+        "status": "PASSED"
+    }
+}
+```
+
+Note that the whitespace I've included here, means that this is not actually a valid GTOP message. A GTOP message should not include line breaks, since the GTOP stream itself is already supposed to be line delimited!
+{:.note}
+
+Naturally, that's not going to cover a whole lot of cases. So let's add some more.
+
+
+```json
+{
+    "testStarted": {
+        "name": "My test suite",
+        "id": "8f22cce8-c281-456e-a2ef-54a863a0ccdd"
+    }
+}
+
+{
+    "testStarted": {
+        "name": "My test",
+        "parentId": "8f22cce8-c281-456e-a2ef-54a863a0ccdd",
+        "id": "d0a2ea3d-a877-40ba-bc60-eff79545d77e"
+    }
+}
+
+{
+    "testResult": {
+        "id": "d0a2ea3d-a877-40ba-bc60-eff79545d77e",
+        "status": "PASSED",
+        "duration": "120"
+    }
+}
+
+{
+    "testResult": {
+        "id": "8f22cce8-c281-456e-a2ef-54a863a0ccdd",
+        "duration": "123",
+        "status": "PASSED"
+    }
+}
+```
+
+Again, this is not a valid GTOP stream due to the inclusion of line breaks within the GTOP messages. Just formatting for human readability.
+
+So, using just 2 message types -- `testStarted` and `testResult` -- we've created a tiny little tree with one branch and one leaf node. We've indicated relations between the branch and its leaves, and we've indicated their status after running, together with how long they've run for. That's a "yay!" as far as I'm concerned.
+
+For more information about the GTOP protocol, I'll refer you to its official minisite -- which is literally empty at the time of writing: [gtop.ilias.xyz](https://gtop.ilias.xyz). Keep an eye on it for future updates.
 
 ### Creating adoption
 
-- PHPUnit: https://phpunit.de/manual/current/en/extending-phpunit.html
-- Karma: http://www.ironsrc.com/news/how-to-create-a-custom-karma-reporter-3/
-- ESLint: http://eslint.org/docs/developer-guide/working-with-custom-formatters
-- JetBrains IDE plugin
-- github org: https://github.com/generic-test-output-protocol
-- gtop.ilias.xyz
-- tap-to-gtop filter?
-- gtop-to-tap filter?
-- commandline gtop results reporter
+One additional problem with TAP that we haven't really talked about, is its reluctancy to gain much traction. Obviously it's popular with the Perl guys, as its the default format for many of its tooling (Test.pm, Test::Simple, Test::More, etc, etc). Although there's *quite a few* modules for different languages for both producing and consuming TAP, still many developers have never heard of TAP, nor do many (consciously) use it.
+
+Obviously, introducing a new output format for tests is not an easy task.
+
+Furthermore, documentation and specification. In order to properly collect documentation and maintain a properly (versioned) specification, I've created a [github organization](https://github.com/generic-test-output-protocol/). The documentation and specification will, for now, appear on [this little website](https://gtop.ilias.xyz/) Feel free to request access if you feel like you have anything to contribute, and we'll talk it over.
+
+I also plan on putting together a couple of supporting projects:
+
+- a PHPUnit TestListener
+- a custom karma reporter
+- a custom ESLint formatter
+- a JetBrains plugin
+
+Perhaps I'll also make some conversion filters -- TAP to GTOP and GTOP to TAP. Finally, a commandline GTOP reporter could be cool.
