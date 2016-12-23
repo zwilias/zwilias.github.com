@@ -191,7 +191,8 @@ So, let's start with the simplest message I can come up with - 1 single test, no
 {
     "testResult": {
         "name": "My test",
-        "status": "PASSED"
+        "status": "PASSED",
+        "id": "e93e081a-7d77-4689-9728-9c2bc1b51983"
     }
 }
 ```
