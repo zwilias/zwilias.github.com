@@ -15,7 +15,7 @@ author: ilias
 externalLink: false
 ---
 
-We're living in modern times. We have an incredible wealth of tooling for our development needs, many of it "language agnostic". We have IDE's capable of managing source files in many different languages, build-tools that may compile and run code written in many different languages, and so much interoperability it'll make your head float. Many of our test-runners have pluggable assertion frameworks, and our IDE's are fairly capable of running our tests and rendering a nice test-tree with pretty results.
+We live in modern times. We have an incredible wealth of tooling for our development needs, many of it "language agnostic". We have IDE's capable of managing source files in many different languages, build-tools that may compile and run code written in many different languages, and so much interoperability it'll make your head float. Many of our test-runners have pluggable assertion frameworks, and our IDE's are fairly capable of running our tests and rendering a nice test-tree with pretty results.
 
 {% include image.html
     img="![Pretty test tree](/assets/images/posts/2016-12-09-unit-test-output-formats-state-of-affairs/v15_tests_vertical_layout.png)"
