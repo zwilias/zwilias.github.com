@@ -254,7 +254,8 @@ I also plan on putting together a couple of supporting projects:
 
 - a PHPUnit TestListener
 - a custom karma reporter
-- a custom ESLint formatter
+- a [custom ESLint formatter](https://github.com/generic-test-output-protocol/eslint-formatter-gtop)
 - a JetBrains plugin
+- a node [gtop parser](https://github.com/generic-test-output-protocol/node-gtop-parser)
 
 Perhaps I'll also make some conversion filters -- TAP to GTOP and GTOP to TAP. Finally, a commandline GTOP reporter could be cool.
