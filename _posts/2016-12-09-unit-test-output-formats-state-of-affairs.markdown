@@ -222,14 +222,14 @@ Naturally, that's not going to cover a whole lot of cases. So let's add some mor
     "testResult": {
         "id": "d0a2ea3d-a877-40ba-bc60-eff79545d77e",
         "status": "PASSED",
-        "duration": "120"
+        "duration": 120
     }
 }
 
 {
     "testResult": {
         "id": "8f22cce8-c281-456e-a2ef-54a863a0ccdd",
-        "duration": "123",
+        "duration": 123,
         "status": "PASSED"
     }
 }
