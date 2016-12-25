@@ -48,7 +48,7 @@ As a developer, this smells of *tight coupling* and a violation of the *separati
 
 TAP -- the [Test Anything Protocol](https://testanything.org/) -- is a sort-of human-readable, plaintext output format which introduces this separation of concerns in the simplest way possible:
 
-> TAP Producer (i.e. your test harness) produces TAP.  
+> TAP Producer (i.e. your test harness) produces TAP.
 > TAP Consumer (i.e. your test result reporter) consumer TAP.
 
 It started life as part of the test harness for Perl but now has implementations in C, C++, Python, PHP, Perl, Java, JavaScript, and others. And it's great. Got a TAP producer? Install a random TAP consumer, and get your test-results in nyan-cat style.
@@ -73,7 +73,7 @@ Lacking a way to declare a test means it is impossible to create a tree before s
 
 ### TAP isn't a line based protocol
 
-Although TAP is a test-based protocol, it is no longer a line-based protocol since the introduction of inline YAML documents. By its very nature, a YAML document requires buffering the entire document before parsing it and attaching that result as a diagnostic to whichever test preceded it. This means a lot of context tracking. Worse, this means a TAP parser cannot report a test result before the next test result arrives, which serves as a trigger that no diagnostics are attached.
+Although TAP is a test-based protocol, it is no longer a line-based protocol since the introduction of inline YAML documents. Intrinsically, a YAML document requires buffering the entire document before parsing it and attaching that result as a diagnostic to whichever test preceded it. This means a lot of context tracking. Worse, this means a TAP parser cannot report a test result before the next test result arrives, which serves as a trigger that no diagnostics are attached.
 
 Besides, as subtest results may be reported before the parent test is reported, a TAP parser needs to keep track of its preceding context.
 
@@ -81,15 +81,15 @@ Besides, as subtest results may be reported before the parent test is reported, 
 
 Highly subjective but I feel that this merits mentioning either way.
 
-It was meant to be human readable, but it's not very clear at all. Especially when subtests and YAMLish diagnostics are used, parsing TAP output - as a human - is, well, awkward. At some point, someone agreed and tried to introduce an alternative syntax: [UTO](https://github.com/universal-test-output/uto-specification). However, that failed to gain much (if any) traction.
+It was meant to be human readable, but it's not clear at all. Especially when subtests and YAMLish diagnostics are used, parsing TAP output - as a human - is, well, awkward. At some point, someone agreed and tried to introduce an alternative syntax: [UTO](https://github.com/universal-test-output/uto-specification). However, that failed to gain much (if any) traction.
 
 ### TAP suffers from keeping backwards compatibility
 
-This is a rather sticky subject with many, widely differing opinions, but it needs to be mentioned either way. Introducing better syntax for subtests, for example, is very hard to do without breaking implementations that can only parse output in an older version of the spec. Of course, this is kind of to be expected; but as outlined in [the TAP Philosophy](https://testanything.org/philosophy.html):
+This is a rather sticky subject with many, widely differing opinions, but it needs to be mentioned either way. Introducing better syntax for subtests, for example, is hard to do without breaking implementations that can only parse output in an older version of the spec. Of course, this is kind of to be expected; but as outlined in [the TAP Philosophy](https://testanything.org/philosophy.html):
 
 > TAP should be forward compatible.
 
-As their format is a rather non-extensible one, there are limited possibilities for introducing new syntax:
+As their format is a rather non-extendable one, there are limited possibilities for introducing new syntax:
 
 - pragmas - which were introduced under the radar, and are intended to influence how the TAP stream is parsed
 - directives - special comments, basically
@@ -120,7 +120,7 @@ In conclusion, TAP is rather broken. Many sad.
 
 ## Exit TAP
 
-But can we fix it? I think TAP as a format is not the way to go. Rather, a *new and improved* **generic test output protocol** (or **GTOP** for short) would be required.
+Can we fix it? I think TAP as a format is not the way to go. Rather, a *new and improved* **generic test output protocol** (or **GTOP** for short) would be required.
 
 Let's start with a number of use cases that should, ultimately, be supported when using this *GTOP*.
 
@@ -240,7 +240,7 @@ Again, this is not a valid GTOP stream due to the inclusion of line breaks withi
 
 So, using just 2 message types -- `testStarted` and `testResult` -- we've created a tiny little tree with one branch and one leaf node. We've indicated relations between the branch and its leaves, and we've indicated their status after running, together with how long they've run for. That's a "yay!" as far as I'm concerned.
 
-For more information about the GTOP protocol, I'll refer you to its official minisite -- which is literally empty at the time of writing: [gtop.ilias.xyz](https://gtop.ilias.xyz). Keep an eye on it for future updates.
+For more information about the GTOP protocol, I'll refer you to its official minisite -- which is literally empty at the time of writing: [gtop.ilias.xyz](https://gtop.ilias.xyz).
 
 ### Creating adoption
 
