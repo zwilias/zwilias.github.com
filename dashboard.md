@@ -20,6 +20,7 @@ layout: page
 
 [![Build Status](https://travis-ci.org/generic-test-output-protocol/node-gtop-parser.svg?branch=master)](https://travis-ci.org/generic-test-output-protocol/node-gtop-parser)
 [![Dependency status](https://david-dm.org/generic-test-output-protocol/node-gtop-parser.svg)](https://david-dm.org/generic-test-output-protocol/node-gtop-parser)
+[![codecov](https://codecov.io/gh/generic-test-output-protocol/node-gtop-parser/branch/master/graph/badge.svg)](https://codecov.io/gh/generic-test-output-protocol/node-gtop-parser)
 [![Dependency status](https://david-dm.org/generic-test-output-protocol/node-gtop-parser/dev-status.svg)](https://david-dm.org/generic-test-output-protocol/node-gtop-parser?type=dev)
 
 ## [gtop-nyan](https://github.com/generic-test-output-protocol/gtop-nyan)
