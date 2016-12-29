@@ -9,12 +9,14 @@ layout: page
 
 [![Build Status](https://travis-ci.org/generic-test-output-protocol/eslint-formatter-gtop.svg?branch=master)](https://travis-ci.org/generic-test-output-protocol/eslint-formatter-gtop)
 [![Dependency status](https://david-dm.org/generic-test-output-protocol/eslint-formatter-gtop.svg)](https://david-dm.org/generic-test-output-protocol/eslint-formatter-gtop)
+[![Known Vulnerabilities](https://snyk.io/test/github/generic-test-output-protocol/eslint-formatter-gtop/badge.svg)](https://snyk.io/test/github/generic-test-output-protocol/eslint-formatter-gtop)
 
 ## [nyan-core](generic-test-output-protocol/nyan-core)
 
 [![Build Status](https://travis-ci.org/generic-test-output-protocol/nyan-core.svg?branch=master)](https://travis-ci.org/generic-test-output-protocol/nyan-core)
 [![Dependency status](https://david-dm.org/generic-test-output-protocol/nyan-core.svg)](https://david-dm.org/generic-test-output-protocol/nyan-core) 
 [![Dev Dependency status](https://david-dm.org/generic-test-output-protocol/nyan-core/dev-status.svg)](https://david-dm.org/generic-test-output-protocol/nyan-core?type=dev) 
+[![Known Vulnerabilities](https://snyk.io/test/github/generic-test-output-protocol/nyan-core/badge.svg)](https://snyk.io/test/github/generic-test-output-protocol/nyan-core)
 
 ## [node-gtop-parser](https://github.com/generic-test-output-protocol/node-gtop-parser)
 
@@ -28,6 +30,7 @@ layout: page
 [![Build Status](https://travis-ci.org/generic-test-output-protocol/gtop-nyan.svg?branch=master)](https://travis-ci.org/generic-test-output-protocol/gtop-nyan)
 [![Dependency status](https://david-dm.org/generic-test-output-protocol/gtop-nyan.svg)](https://david-dm.org/generic-test-output-protocol/gtop-nyan)
 [![Dependency status](https://david-dm.org/generic-test-output-protocol/gtop-nyan/dev-status.svg)](https://david-dm.org/generic-test-output-protocol/gtop-nyan?type=dev)
+[![Known Vulnerabilities](https://snyk.io/test/github/generic-test-output-protocol/gtop-nyan/badge.svg)](https://snyk.io/test/github/generic-test-output-protocol/gtop-nyan)
 
 ## [gtop-spec](https://github.com/generic-test-output-protocol/gtop-spec)
 
@@ -41,6 +44,7 @@ layout: page
 ## [gtop.ilias.xyz](https://github.com/generic-test-output-protocol/generic-test-output-protocol.github.io)
 
 [![Build Status](https://travis-ci.org/generic-test-output-protocol/generic-test-output-protocol.github.io.svg?branch=master)](https://travis-ci.org/generic-test-output-protocol/generic-test-output-protocol.github.io)
+[![Known Vulnerabilities](https://snyk.io/test/github/generic-test-output-protocol/generic-test-output-protocol.github.io/badge.svg)](https://snyk.io/test/github/generic-test-output-protocol/generic-test-output-protocol.github.io)
 
 # Personal
 
