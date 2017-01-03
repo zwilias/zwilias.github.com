@@ -36,7 +36,7 @@ github: zwilias
 # stackoverflow: 7044681/mystackoverflow
 # quora: userquora
 # reddit: username
-# medium: medium
+medium: zwilias
 # vimeo: myvimeo
 email: mail@ilias.xyz
 soundcloud: zwilias
@@ -59,7 +59,7 @@ authors:
 # Sections
 projects: true
 about: true
-blog: true
+blog: false
 
 # options
 read-time: true
