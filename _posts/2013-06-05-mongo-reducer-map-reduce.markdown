@@ -1,5 +1,5 @@
 ---
-title: "MongoReducer, Map/Reduce in MongoDB"
+title: "MongoReducer, Map/Reduce in MongoDB."
 layout: post
 date: 2013-06-05 22:10
 tag:

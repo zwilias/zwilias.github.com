@@ -1,5 +1,5 @@
 ---
-title: "Beanie, a clean, lean PHP beanstalkd client"
+title: "Beanie, a clean, lean PHP beanstalkd client."
 layout: post
 date: 2015-08-02 22:10
 tag:
