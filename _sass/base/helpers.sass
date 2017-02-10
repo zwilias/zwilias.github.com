@@ -22,6 +22,17 @@
 	animation-delay: 0.3s
 	animation-fill-mode: both
 
+$breakpoints: ('small': 500px)
+
+@mixin respond-to($breakpoint)
+	$value: map-get($breakpoints, $breakpoint)
+
+	@if $value != null
+		@media (min-width: $value)
+			@content
+	@else
+		@warn "Nope"
+
 @keyframes fade-in-down
 	0%
 		opacity: 0
